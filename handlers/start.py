@@ -57,7 +57,9 @@ async def send_state(message: Message, bot: Bot, state: FSMContext):
 	try:
 		await bot.send_message(user_id,
 							   f'{message.from_user.full_name} (@{message.from_user.username}) отправил тебе сообщение:\n\n'
-							   f'{message.text}')
+							   f'{message.text}',
+							   reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(
+								   text='Открыть профиль', url=f'tg://user?id={message.from_user.id}')]]))
 	except:
 		pass
 
